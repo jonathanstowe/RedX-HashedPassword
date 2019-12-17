@@ -28,13 +28,13 @@ isnt $a.password, $password, 'should get back the hashed password';
 
 ok $a.check-password($password), "check-password";
 
-my $b = M.^rs.grep(*.username eq 'testuser').first;
+my $b = M.^rs.first(*.username eq 'testuser');
 is $b.password, $a.password, "retrieved the same hashed password";
 
 $b.text_column = "some text";
 $b.^save;
 
-$b = M.^rs.grep(*.username eq 'testuser').first;
+$b = M.^rs.first(*.username eq 'testuser');
 is $b.password, $a.password, "retrieved the same hashed password (after update)";
 
 $password = ('a' .. 'z').pick(10).join;
@@ -45,7 +45,7 @@ $b.^save(:update);
 
 ok $b.check-password($password), "check-password (updated password)";
 
-my $c = M.^rs.grep(*.username eq 'testuser').first;
+my $c = M.^rs.first(*.username eq 'testuser');
 is $c.password, $b.password, "retrieved the same hashed password as the one in the object";
 
 done-testing;

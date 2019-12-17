@@ -28,7 +28,7 @@ User.^create( username => 'user', password => 'password'); # password is saved a
 
 ...
 
-my User $user = User.^rs.grep( *.username eq 'user' ).first;
+my User $user = User.^rs.first( *.username eq 'user' );
 
 $user.check-password('password');  # True
 
