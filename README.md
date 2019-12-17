@@ -57,7 +57,7 @@ Assuming you have a working Rakudo installation then you can install this with *
 
      zef install .
 
-The module requires at least v0.1.0 of Crypt::Libcrypt](https://github.com/jonathanstowe/Crypt-Libcrypt)
+The module requires at least v0.1.0 of [Crypt::Libcrypt](https://github.com/jonathanstowe/Crypt-Libcrypt)
 so you may want to upgrade that first if you already have it installed.
 
 ## Support

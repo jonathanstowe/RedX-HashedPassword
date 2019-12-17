@@ -1,0 +1,32 @@
+{
+   "auth" : "github:jonathanstowe",
+   "authors" : [
+      "Jonathan Stowe <jns+gh@gellyfish.co.uk>"
+   ],
+   "build-depends" : [],
+   "depends" : [ 
+     "Red",
+     "Crypt::Libcrypt:ver<0.1.0+>"
+   ],
+   "description" : "A facility to allow the Red ORM to store and use hashed passwords in the database",
+   "license" : "Artistic-2.0",
+   "meta-version" : "1",
+   "name" : "RedX::HashedPassword",
+   "perl" : "6.d",
+   "raku" : "6.d",
+   "provides" : {
+      "RedX::HashedPassword" : "lib/RedX/HashedPassword.pm"
+   },
+   "resources" : [],
+   "source-url" : "https://github.com/jonathanstowe/RedX-HashedPassword.git",
+   "support" : {
+      "email" : "jns+gh@gellyfish.co.uk",
+      "source" : "https://github.com/jonathanstowe/RedX-HashedPassword.git",
+      "bugtracker" : "https://github.com/jonathanstowe/RedX-HashedPassword/issues"
+   },
+   "tags" : [
+     "password", "hash", "red", "database"
+   ],
+   "test-depends" : [],
+   "version" : "0.0.1"
+}

@@ -1,0 +1,58 @@
+{
+  "type": "layout",
+  "children": [
+    {
+      "type": "directory",
+      "purpose": null,
+      "children": [
+        {
+          "type": "file",
+          "name": "001-meta.t"
+        },
+        {
+          "type": "file",
+          "name": "010-use.t"
+        },
+        {
+          "name": "020-basic.t",
+          "type": "file"
+        }
+      ],
+      "name": "t"
+    },
+    {
+      "name": "README.md",
+      "type": "file"
+    },
+    {
+      "name": "lib",
+      "children": [
+        {
+          "purpose": null,
+          "type": "directory",
+          "children": [
+            {
+              "name": "HashedPassword.pm",
+              "type": "file"
+            }
+          ],
+          "name": "RedX"
+        }
+      ],
+      "purpose": null,
+      "type": "directory"
+    },
+    {
+      "type": "file",
+      "name": "META6.json"
+    },
+    {
+      "name": "Changes",
+      "type": "file"
+    },
+    {
+      "type": "file",
+      "name": "LICENCE"
+    }
+  ]
+}
