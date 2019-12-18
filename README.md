@@ -44,7 +44,9 @@ the ```handles <check-password>``` trait to your column attribute.
 The hashing algorithm used will be the best one provided by ```libcrypt``` 
 ( via [Crypt::Libcrypt](https://github.com/jonathanstowe/Crypt-Libcrypt) ) or, if that
 can't be determined, it will fall back to SHA-512 which seems to be the best commonly
-provided algorithm.
+provided algorithm, except on *MacOS( where the ```libcrypt``` only appears to support
+the "heritage" DES algorithm - which has been considered insecure for most of this
+century, so *you probably don't want to use this in production on MacOS for the timebeing.*
 
 ## Installtion
 
@@ -68,7 +70,7 @@ https://github.com/jonathanstowe/RedX-HashedPassword/issues
 
 Ideally there should be a better choice of hashing algorithm from those
 provided by the OS and installed modules, this will come after the initial
-release but any suggestions as to how to do this would be gratefully received.
+release.
 
 
 ## Licence

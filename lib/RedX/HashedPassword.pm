@@ -52,7 +52,9 @@ the C<handles <check-password>> trait to your column attribute.
 The hashing algorithm used will be the best one provided by C<libcrypt>
 ( via L<Crypt::Libcrypt|https://github.com/jonathanstowe/Crypt-Libcrypt> ) or, if that
 can't be determined, it will fall back to SHA-512 which seems to be the best commonly
-provided algorithm.
+provided algorithm, except on C<MacOS> where the C<libcrypt> only appears to support
+the "heritage" DES algorithm - which has been considered insecure for most of this
+century, so you probably don't want to use this in production on MacOS for the timebeing.
 
 
 =end pod
@@ -70,7 +72,14 @@ module RedX::HashedPassword {
             $salt;
         }
         else {
-            '$6$' ~ (|("a" .. "z"), |("A" .. "Z"), |(0 .. 9)).pick(16).join ~ '$';
+            my @chars = (|("a" .. "z"), |("A" .. "Z"), |(0 .. 9));
+            # It appears that you only get DES on MacOS
+            if $*DISTRO.name eq 'macosx' {
+                @chars.pick(2).join;
+            }
+            else {
+                '$6$' ~ @chars.pick(16).join ~ '$';
+            }
         }
     }
 
