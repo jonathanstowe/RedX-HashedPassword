@@ -19,7 +19,7 @@ use RedX::HashedPassword;
 model User {
     has Int $.id        is serial;
     has Str $.username  is column;
-    has Str $.password  is hashed-password handles <check-password>;
+    has Str $.password  is password handles <check-password>;
 }
 
 ...
@@ -41,7 +41,7 @@ This provides a mechanism for L<Red|https://github.com/FCO/Red> to store a passw
 as a cryptographic hash in the database, such that someone who gains access to the
 database cannot see the plain text password that may have been entered by a user.
 
-The primary interface provided is the C<is hashed-password> trait that should be
+The primary interface provided is the C<is password> trait that should be
 applied to the column attribute in your model definition that you want to store the
 hashed password in, this takes care of hashing the password before it is stored in
 the database, on retrieval ("inflation") it also applies a role that provides a method
