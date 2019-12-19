@@ -6,6 +6,7 @@
    "build-depends" : [],
    "depends" : [ 
      "Red",
+     "Crypt::AnyPasswordHash",
      "Crypt::Libcrypt:ver<0.1.0+>"
    ],
    "description" : "A facility to allow the Red ORM to store and use hashed passwords in the database",
@@ -28,5 +29,5 @@
      "password", "hash", "red", "database"
    ],
    "test-depends" : [],
-   "version" : "0.0.3"
+   "version" : "0.0.4"
 }

@@ -1,7 +1,7 @@
 use v6;
 
 need Red::Attr::Column;
-use Crypt::Libcrypt:ver<0.1.0+>;
+use Crypt::AnyPasswordHash;
 
 =begin pod
 
@@ -63,29 +63,13 @@ module RedX::HashedPassword {
 
     my role CryptedPasswordColumn {
         method check-password(Str $password --> Bool ) {
-            crypt($password, self.Str) eq self.Str
-        }
-    }
-
-    sub generate-salt(--> Str) {
-        if crypt-generate-salt() -> $salt {
-            $salt;
-        }
-        else {
-            my @chars = (|("a" .. "z"), |("A" .. "Z"), |(0 .. 9));
-            # It appears that you only get DES on MacOS
-            if $*DISTRO.name eq 'macosx' {
-                @chars.pick(2).join;
-            }
-            else {
-                '$6$' ~ @chars.pick(16).join ~ '$';
-            }
+            check-password(self.Str, $password);
         }
     }
 
     sub deflate(Str $password is raw --> Str) {
         if $password !~~ CryptedPasswordColumn  {
-            $password = crypt($password, generate-salt()) but CryptedPasswordColumn;
+            $password = hash-password($password) but CryptedPasswordColumn;
         }
         else {
             $password;
