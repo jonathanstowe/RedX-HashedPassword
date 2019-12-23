@@ -1,7 +1,7 @@
 use v6;
 
 need Red::Attr::Column;
-use Crypt::Libcrypt:ver<0.1.0+>;
+use Crypt::AnyPasswordHash:ver<0.0.3+>;
 
 =begin pod
 
@@ -49,12 +49,23 @@ C<check-password> that checks a provided plaintext password against the stored h
 You can make this appear to be a method of your (for example,) User model by applying
 the C<handles <check-password>> trait to your column attribute.
 
-The hashing algorithm used will be the best one provided by C<libcrypt>
-( via L<Crypt::Libcrypt|https://github.com/jonathanstowe/Crypt-Libcrypt> ) or, if that
-can't be determined, it will fall back to SHA-512 which seems to be the best commonly
-provided algorithm, except on C<MacOS> where the C<libcrypt> only appears to support
-the "heritage" DES algorithm - which has been considered insecure for most of this
-century, so you probably don't want to use this in production on MacOS for the timebeing.
+The hashing algorithm used will be the best one provided by
+L<Crypt::AnyPasswordHash|https://github.com/jonathanstowe/Crypt-AnyPasswordHash>
+which has two implications, firstly the default provider is
+L<Crypt::Libcrypt|https://github.com/jonathanstowe/Crypt-Libcrypt>
+if no other supported hashing module is installed, this will attempt
+to use the mechanism suggested by the C<libcrypt> but if this can't
+be determined, it will fall back to SHA-512 which seems to be the best
+commonly provided algorithm, except on C<MacOS> where the C<libcrypt>
+only appears to support the "heritage" DES algorithm - which has been
+considered insecure for most of this century, so you probably don't want
+to use this in production on MacOS for the timebeing without installing
+one of the other modules supported by C<Crypt::AnyPasswordHash>.
+The second implication is that, if you are going to access the hashed
+password from multiple hosts, you should ensure that you have the same
+hashing module installed on all the hosts in order that they can all
+verify the same methods.
+
 
 
 =end pod
@@ -63,29 +74,13 @@ module RedX::HashedPassword {
 
     my role CryptedPasswordColumn {
         method check-password(Str $password --> Bool ) {
-            crypt($password, self.Str) eq self.Str
-        }
-    }
-
-    sub generate-salt(--> Str) {
-        if crypt-generate-salt() -> $salt {
-            $salt;
-        }
-        else {
-            my @chars = (|("a" .. "z"), |("A" .. "Z"), |(0 .. 9));
-            # It appears that you only get DES on MacOS
-            if $*DISTRO.name eq 'macosx' {
-                @chars.pick(2).join;
-            }
-            else {
-                '$6$' ~ @chars.pick(16).join ~ '$';
-            }
+            check-password(self.Str, $password);
         }
     }
 
     sub deflate(Str $password is raw --> Str) {
         if $password !~~ CryptedPasswordColumn  {
-            $password = crypt($password, generate-salt()) but CryptedPasswordColumn;
+            $password = hash-password($password) but CryptedPasswordColumn;
         }
         else {
             $password;

@@ -6,14 +6,14 @@
    "build-depends" : [],
    "depends" : [ 
      "Red",
-     "Crypt::Libcrypt:ver<0.1.0+>"
+     "Crypt::AnyPasswordHash:ver<0.0.3+>"
    ],
    "description" : "A facility to allow the Red ORM to store and use hashed passwords in the database",
    "license" : "Artistic-2.0",
    "meta-version" : "1",
    "name" : "RedX::HashedPassword",
-   "perl" : "6.d",
-   "raku" : "6.d",
+   "perl" : "6.^",
+   "raku" : "6.^",
    "provides" : {
       "RedX::HashedPassword" : "lib/RedX/HashedPassword.pm"
    },
@@ -28,5 +28,5 @@
      "password", "hash", "red", "database"
    ],
    "test-depends" : [],
-   "version" : "0.0.3"
+   "version" : "0.0.4"
 }

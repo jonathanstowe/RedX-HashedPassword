@@ -1,3 +1,5 @@
+v0.0.4		Mon 23 Dec 12:35:30 GMT 2019
+	* Use Crypt::AnyPasswordHash
 v0.0.3		Wed 18 Dec 20:17:27 GMT 2019
 	* Allow for a DES style salt on MacOS
 v0.0.2		Tue 17 Dec 17:02:25 GMT 2019

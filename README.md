@@ -41,12 +41,21 @@ the database, on retrieval ("inflation") it also applies a role that provides a 
 You can make this appear to be a method of your (for example,) User model by applying
 the ```handles <check-password>``` trait to your column attribute.
 
-The hashing algorithm used will be the best one provided by ```libcrypt``` 
-( via [Crypt::Libcrypt](https://github.com/jonathanstowe/Crypt-Libcrypt) ) or, if that
-can't be determined, it will fall back to SHA-512 which seems to be the best commonly
-provided algorithm, except on *MacOS( where the ```libcrypt``` only appears to support
-the "heritage" DES algorithm - which has been considered insecure for most of this
-century, so *you probably don't want to use this in production on MacOS for the timebeing.*
+The hashing algorithm used will be the best one provided by
+[Crypt::AnyPasswordHash](https://github.com/jonathanstowe/Crypt-AnyPasswordHash)
+which has two implications, firstly the default provider is
+[Crypt::Libcrypt](https://github.com/jonathanstowe/Crypt-Libcrypt) if no
+other supported hashing module is installed, this will attempt to use the
+mechanism suggested by the `libcrypt` but if this can't be determined,
+it will fall back to SHA-512 which seems to be the best commonly provided
+algorithm, except on `MacOS` where the `libcrypt` only appears to support
+the "heritage" DES algorithm - which has been considered insecure for most
+of this century, so you probably don't want to use this in production
+on MacOS for the timebeing without installing one of the other modules
+supported by `Crypt::AnyPasswordHash`. The second implication is that,
+if you are going to access the hashed password from multiple hosts,
+you should ensure that you have the same hashing module installed on
+all the hosts in order that they can all verify the same methods.
 
 ## Installtion
 
