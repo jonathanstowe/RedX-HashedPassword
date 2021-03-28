@@ -1,5 +1,9 @@
 {
+   "name" : "RedX::HashedPassword",
+   "version" : "0.0.5",
    "auth" : "github:jonathanstowe",
+   "api" : "1.0",
+   "description" : "A facility to allow the Red ORM to store and use hashed passwords in the database",
    "authors" : [
       "Jonathan Stowe <jns+gh@gellyfish.co.uk>"
    ],
@@ -8,10 +12,8 @@
      "Red",
      "Crypt::AnyPasswordHash:ver<0.0.3+>"
    ],
-   "description" : "A facility to allow the Red ORM to store and use hashed passwords in the database",
    "license" : "Artistic-2.0",
    "meta-version" : "1",
-   "name" : "RedX::HashedPassword",
    "perl" : "6.^",
    "raku" : "6.^",
    "provides" : {
@@ -27,6 +29,5 @@
    "tags" : [
      "password", "hash", "red", "database"
    ],
-   "test-depends" : [],
-   "version" : "0.0.4"
+   "test-depends" : []
 }

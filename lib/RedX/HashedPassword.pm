@@ -95,4 +95,4 @@ module RedX::HashedPassword {
         $attr does Red::Attr::Column({ :&inflate, :&deflate });
     }
 }
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku

@@ -1,3 +1,6 @@
+v0.0.5		Sun 28 Mar 11:02:31 BST 2021
+	* Light renaming
+	* Add GH action for CI testing
 v0.0.4		Mon 23 Dec 12:35:30 GMT 2019
 	* Use Crypt::AnyPasswordHash
 v0.0.3		Wed 18 Dec 20:17:27 GMT 2019

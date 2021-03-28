@@ -2,6 +2,8 @@
 
 A facility to allow the Red ORM to store and use hashed passwords in the database.
 
+![Build Status](https://github.com/jonathanstowe/RedX-HashedPassword/workflows/CI/badge.svg)
+
 ## Synopsis
 
 ```raku
@@ -88,5 +90,5 @@ This is free software.
 
 Please see the [LICENCE](LICENCE) file in the distribution
 
-© Jonathan Stowe 2019
+© Jonathan Stowe 2019 - 2021
 
