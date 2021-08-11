@@ -1,7 +1,7 @@
 use v6;
 
 need Red::Attr::Column;
-use Crypt::AnyPasswordHash:ver<0.0.3+>;
+use Crypt::AnyPasswordHash:ver<0.1.2+>;
 
 =begin pod
 

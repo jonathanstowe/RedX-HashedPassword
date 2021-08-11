@@ -1,3 +1,5 @@
+v0.0.6		Tue 10 Aug 16:21:52 BST 2021
+	* Bump minimum Crypt::AnyPassswordHash version
 v0.0.5		Sun 28 Mar 11:02:31 BST 2021
 	* Light renaming
 	* Add GH action for CI testing
