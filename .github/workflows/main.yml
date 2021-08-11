@@ -20,7 +20,7 @@ jobs:
       run: raku -v
 
     - name: Install dependencies
-      run: zef install --deps-only --/test --exclude="pq" --test-depends .
+      run: zef install --deps-only --/test --exclude="pq:ver<5>:from<native>" --test-depends .
 
     - name: Run tests
       run: zef test -v --debug .
