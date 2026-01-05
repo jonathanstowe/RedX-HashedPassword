@@ -23,13 +23,13 @@
     "Crypt::AnyPasswordHash:ver<0.1.2+>"
   ],
   "provides": {
-    "RedX::HashedPassword": "lib/RedX/HashedPassword.pm"
+    "RedX::HashedPassword": "lib/RedX/HashedPassword.rakumod"
   },
   "build-depends": [
   ],
   "test-depends": [
   ],
-  "version": "0.0.7",
+  "version": "0.0.8",
   "authors": [
     "Jonathan Stowe <jns+gh@gellyfish.co.uk>"
   ],

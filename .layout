@@ -32,7 +32,7 @@
           "type": "directory",
           "children": [
             {
-              "name": "HashedPassword.pm",
+              "name": "HashedPassword.rakumod",
               "type": "file"
             }
           ],
